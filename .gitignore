@@ -5,3 +5,8 @@ pibody.py
 libs/
 test.py
 main.py
+climate.py
+colorsensor.py
+distance.py
+encoder_updated.py
+gyroaxel.py
