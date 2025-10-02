@@ -18,13 +18,6 @@ CLOSE_ANGLE = 0      # gate closed angle
 OPEN_TIME_S = 5      # keep gate open for 5 seconds
 
 # --- Helpers ---
-def move_servo(angle):
-    """Move servo to given angle (0–180°). Adjust min/max if your servo differs."""
-    min_u16 = 1638     # ~0.5 ms pulse @ 50 Hz -> 0°
-    max_u16 = 8192     # ~2.5 ms pulse @ 50 Hz -> 180°
-    duty = int(min_u16 + (angle / 180) * (max_u16 - min_u16))
-    servo.duty_u16(duty)
-
 def tone(freq, ms):
     """Play a tone on the buzzer at freq Hz for ms milliseconds."""
     buzzer.freq(freq)
