@@ -18,7 +18,7 @@ def show_level(value):
     led.write()
 
 while True:
-    x, y, z = gyro.read_accel_data()
+    x, y, z = gyro.read_accel()
     y = y * 180
     show_level(y)
     sleep(0.1)
