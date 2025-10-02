@@ -1,4 +1,4 @@
-from pibody import LED, PushButton, Buzzer
+from pibody import LED, Button, Buzzer
 from time import sleep
 
 # Define the pin numbers for the LEDs
@@ -8,7 +8,7 @@ buzzer_slot = 'D'
 
 # Initialize the LEDs, button, and buzzer
 leds = [LED(pin) for pin in led_slots]
-button = PushButton(button_slot)
+button = Button(button_slot)
 buzzer = Buzzer(buzzer_slot)
 buzzer.freq(440)  # Set frequency for the buzzer
 
