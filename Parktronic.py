@@ -1,46 +1,49 @@
-from pibody import LED, Distance, Buzzer
+from pibody import Distance, Buzzer, LEDTower
 from time import sleep
 
-led_yellow = LED('A')
-led_red = LED('B')
+led = LEDTower(18)
 
-buzzer = Buzzer('C')
+buzzer = Buzzer('F')
 buzzer.freq(523)
 
-sensor = Distance('F')
+sensor = Distance('C')
 
 while True:
     distance = sensor.read()
     print(distance)
 
     if distance == 20 or distance == 8190:
-        led_yellow.off()
-        led_red.off()
+        led.fill((0, 100, 0))
+        led.write()
         buzzer.duty_u16(0)
         continue
 
-    if 40 <= distance and distance < 70:
-        
-        led_yellow.on()
-        led_red.off()
-        
+    if 75 <= distance and distance < 150:
+
+        led.fill((100, 100, 0))
+        led.write()
+
         buzzer.duty_u16(16384)
         sleep(0.3)
+
+        led.fill((0, 0, 0))
+        led.write()
         buzzer.duty_u16(0)
         sleep(0.05)
         
-    elif distance < 40:
-        
-        led_yellow.on()
-        led_red.on()
-        
+    elif distance < 75:
+        led.fill((100, 0, 0))
+        led.write()     
         buzzer.duty_u16(16384)
         sleep(0.2)
+
+        led.fill((0, 0, 0))
+        led.write()
         buzzer.duty_u16(0)
         
     else:
-        led_yellow.off()
-        led_red.off()
+        led.fill((0, 100, 0))
+        led.write()
         buzzer.duty_u16(0)
         
     sleep(0.1)
