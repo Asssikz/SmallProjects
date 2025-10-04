@@ -2,9 +2,9 @@ from pibody import LED, Button, Buzzer
 from time import sleep
 
 # Define the pin numbers for the LEDs
-led_slots = ['A', 'B', 'C'] # green, yellow, red
-button_slot = 'E'
-buzzer_slot = 'D'
+led_slots = ['A', 'B', 'D'] # green, yellow, red
+button_slot = 'F'
+buzzer_slot = 'C'
 
 # Initialize the LEDs, button, and buzzer
 leds = [LED(pin) for pin in led_slots]
