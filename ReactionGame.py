@@ -1,13 +1,20 @@
-from pibody import LED, PushButton, Buzzer
+from pibody import LED, Button, Buzzer, Servo
 from time import sleep
+from random import randint
 
-led_1p = LED('A')
+led_1p = LED('B')
 led_2p = LED('D')
 
-btn_1p = PushButton('B')
-btn_2p = PushButton('E')
+btn_1p = Button('A')
+btn_2p = Button('E')
 
-buzzer = Buzzer('F')
+buzzer = Buzzer('C')
+
+servo1 = Servo(8)
+servo2 = Servo(9)
+
+servo1.angle(90)
+servo2.angle(90)
 
 game_state = 'waiting'
 time_limit = 3
@@ -40,16 +47,22 @@ while True:
     
     led_1p.off()
     led_2p.off()
+    servo1.angle(90)
+    servo2.angle(90)
 
+
+    time_limit = randint(300, 700)
     # False start check
-    for i in range(time_limit * 100):
+    for i in range(time_limit):
         if btn_1p.value():
             print('False start! Player 1 loses')
+            servo1.angle(180)
             blink_led(led_2p)
             game_state = 'waiting'
             break
         if btn_2p.value():
             print('False start! Player 2 loses')
+            servo2.angle(0)
             blink_led(led_1p)
             game_state = 'waiting'
             break
@@ -60,11 +73,13 @@ while True:
     while game_state == 'playing':
         if btn_1p.value():
             print('Player 1 wins!')
+            servo2.angle(0)
             blink_led(led_1p)
             game_state = 'waiting'
             break
         if btn_2p.value():
             print('Player 2 wins!')
+            servo1.angle(180)
             blink_led(led_2p)
             game_state = 'waiting'
             break
