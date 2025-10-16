@@ -1,9 +1,9 @@
-from pibody import Display, PushButton, LEDTower
+from pibody import Display, Button, LEDTower
 from time import sleep, ticks_ms
 
 display = Display()
-next_btn = PushButton("A")
-enter_btn = PushButton("D")
+next_btn = Button("A")
+enter_btn = Button("D")
 led_tower = LEDTower()
 
 num_of_bits = 8
