@@ -18,22 +18,15 @@ CLOSE_ANGLE = 0      # gate closed angle
 OPEN_TIME_S = 5      # keep gate open for 5 seconds
 
 # --- Helpers ---
-def tone(freq, ms):
-    """Play a tone on the buzzer at freq Hz for ms milliseconds."""
-    buzzer.freq(freq)
-    buzzer.duty_u16(32768)  # ~50% duty
-    sleep(ms / 1000)
-    buzzer.duty_u16(0)
-
 def beep_open():
     """Single cheerful beep = opening."""
-    tone(1200, 150)
+    buzzer.make_sound(1200, 1, 0.15)
 
 def beep_close():
     """Double short beep = closing."""
-    tone(800, 100)
+    buzzer.make_sound(800, 1, 0.15)
     sleep(0.08)
-    tone(800, 100)
+    buzzer.make_sound(800, 1, 0.15)
 
 # --- Main loop ---
 while True:

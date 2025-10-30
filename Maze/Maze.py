@@ -8,10 +8,11 @@ joystick = Joystick('F')
 state = 0
 
 while True:
-    if button.read() == 1:
-        time.sleep(0.1)
-        if button.read() == 0:
-            state = 1 - state
+    if button.read():
+        state = 1 - state
+        while button.read():
+            time.sleep(0.1)
+            
     if state == 0:
         servoX.angle(90)
         servoY.angle(90)
