@@ -11,10 +11,10 @@ yellow_button = Button("H")
 red_button = Button("G")
 
 buzzer = Buzzer("A")
-buzzer.volume(0.4)
+buzzer.volume(0.5)
 buzzer.off()
 
-freq_map = [400, 500, 600]
+freq_map = [400, 550, 700]
 
 leds = [green_led, yellow_led, red_led]
 buttons = [green_button, yellow_button, red_button]
@@ -24,9 +24,9 @@ def show_sequence():
         leds[i].on()
         buzzer.freq(freq_map[i])
         buzzer.on()
-        sleep(0.1)
+        sleep(0.05)
         buzzer.off()
-        sleep(0.7)
+        sleep(0.75)
         leds[i].off()
         sleep(0.2)
 
@@ -51,6 +51,22 @@ def game_over():
             led.off()
         buzzer.boop()
         sleep(0.1)
+
+def success():
+    for led in leds:
+        led.on()
+    buzzer.freq(1000)
+    buzzer.on()
+    sleep(0.1)
+    buzzer.off()
+    sleep(0.1)
+    buzzer.freq(1500)
+    buzzer.on()
+    sleep(0.1)
+    buzzer.off()
+    for led in leds:
+        led.off()
+    sleep(0.1)
 
 actual_sequence = []
 button_sequence = []
@@ -82,7 +98,7 @@ while True:
                 leds[index].on()
                 buzzer.freq(freq_map[index])
                 buzzer.on()
-                sleep(0.1)
+                sleep(0.05)
                 buzzer.off()
                 print(button_sequence)
                 while btn.value():
@@ -98,10 +114,12 @@ while True:
 
     button_sequence.clear()
     if game_status == 'playing':
-        sleep(1)
+        sleep(0.2)
+        success()
+        sleep(0.4)
         actual_sequence.append(randint(0, 2))
         show_sequence()
-        sleep(0.5)
+        sleep(0.3)
         
     if game_status == 'lose':
         game_status = 'waiting'

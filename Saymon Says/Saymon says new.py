@@ -25,7 +25,7 @@ def all_leds_off():
 def play_note(index, duration=0.4):
     leds[index].on()
     buzzer.freq(400 + index * 150)
-    buzzer.volume(0.2)
+    buzzer.volume(0.5)
     sleep(duration)
     buzzer.volume(0)
     leds[index].off()
