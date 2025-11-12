@@ -1,8 +1,8 @@
 from pibody import Encoder, LEDTower
 
-encoder = Encoder('C')
+encoder = Encoder('A')
 encoder.wrap(0, 255)
-led = LEDTower(8)
+led = LEDTower(16)
 binary = [0] * 8
 
 while True:
