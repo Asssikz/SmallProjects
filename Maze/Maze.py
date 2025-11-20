@@ -24,3 +24,5 @@ while True:
 
     servoX.angle(angleX)
     servoY.angle(angleY)
+
+    
