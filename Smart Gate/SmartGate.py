@@ -9,7 +9,7 @@ sensor = Distance("A")
 servo = Servo(8)
 
 # Buzzer on GP6 (slot E left). Change if needed.
-buzzer = Buzzer('E')
+buzzer = Buzzer('F')
 
 # --- Settings ---
 TRIGGER_MM = 100     # 10 cm

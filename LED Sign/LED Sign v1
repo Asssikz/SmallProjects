@@ -1,0 +1,34 @@
+from pibody import LEDTower, Sound
+from time import sleep
+
+led = LEDTower("A")
+mic = Sound("C")
+
+MAX_BRIGHTNESS = 150   # максимум яркости (0–255)
+MIN_BRIGHTNESS = 10
+STEP = 2              # шаг изменения яркости
+DELAY = 0.02          # пауза между шагами, влияет на скорость "дыхания"
+index = 0
+
+def get_palette(index, b):
+    color = [(b, b, b), (b, 0, 0), (0, b, 0), (0, 0, b), (b, b, 0), (b, 0, b), (0, b, b)]
+    return color[index]
+
+while True:
+    # Плавное включение (вдох)
+    for b in range(MIN_BRIGHTNESS, MAX_BRIGHTNESS + 1, STEP):
+        if mic.read_digital():
+            index = (index + 1) % 7
+            sleep(0.1)
+        led.fill(get_palette(index, b))   # зелёный цвет с яркостью b
+        led.write()
+        sleep(DELAY)
+
+    # Плавное выключение (выдох)
+    for b in range(MAX_BRIGHTNESS, MIN_BRIGHTNESS-1, -STEP):
+        if mic.read_digital():
+            index = (index + 1) % 7
+            sleep(0.1)
+        led.fill(get_palette(index, b))
+        led.write()
+        sleep(DELAY)
