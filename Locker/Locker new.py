@@ -6,7 +6,7 @@ encoder = Encoder('B')      # крутилка: выбираем цифру
 button  = Button('A')       # кнопка: подтверждаем текущую цифру
 buzzer  = Buzzer('E')
 servo   = Servo(8)
-np      = LEDTower(4)
+np      = LEDTower('H')
 
 encoder.wrap(0, 7)          # цифры 0..7 из энкодера
 

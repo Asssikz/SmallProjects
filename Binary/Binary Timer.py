@@ -1,12 +1,12 @@
 from pibody import Encoder, LEDTower, Button, Buzzer
 from time import ticks_ms, ticks_diff, sleep
 
-buzzer = Buzzer('F')
+buzzer = Buzzer('A')
 button = Button('E')
 
-encoder = Encoder('G')
+encoder = Encoder('F')
 encoder.wrap(0, 255)
-led = LEDTower(18)
+led = LEDTower('H')
 binary = [0] * 8
 
 state = 0

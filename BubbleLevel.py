@@ -1,8 +1,8 @@
 from pibody import GyroAxel, LEDTower
 from time import sleep
 
-gyro = GyroAxel("F")
-led = LEDTower(4)
+gyro = GyroAxel("A")
+led = LEDTower("H")
 num_leds = 8
 
 def show_level(value):
@@ -10,9 +10,9 @@ def show_level(value):
     led.fill((0, 0, 0))
 
     if abs(value) < 10:
-        color = (0, 50, 0)
+        color = (0, 255, 0)
     else:
-        color = (0, 0, 50)
+        color = (0, 0, 255)
 
     led[led_index] = color
     led.write()

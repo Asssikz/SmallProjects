@@ -2,15 +2,15 @@ from pibody import LED, Button, Buzzer
 from random import randint
 from time import sleep
 
-green_led = LED("B")
-yellow_led = LED("D")
-red_led = LED("E")
+green_led = LED("A")
+yellow_led = LED("B")
+red_led = LED("C")
 
-green_button = Button("F")
-yellow_button = Button("H")
-red_button = Button("G")
+green_button = Button("D")
+yellow_button = Button("E")
+red_button = Button("F")
 
-buzzer = Buzzer("A")
+buzzer = Buzzer("G")
 buzzer.volume(0.5)
 buzzer.off()
 
