@@ -1,6 +1,6 @@
 from pibody import Encoder, LEDTower
 
-encoder = Encoder('A')
+encoder = Encoder('H')
 encoder.wrap(0, 255)
 led = LEDTower(16)
 binary = [0] * 8
