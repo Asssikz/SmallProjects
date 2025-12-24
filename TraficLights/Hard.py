@@ -1,6 +1,3 @@
-from pibody.wrappers.generic import LED
-
-
 from pibody import LED, Button, Buzzer
 from time import sleep
 
