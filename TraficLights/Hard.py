@@ -1,14 +1,14 @@
 from pibody import LED, Button, Buzzer
 from time import sleep
 
-ledG = LED("C")
-ledY = LED("B")
 ledR = LED("A")
+ledY = LED("B")
+ledG = LED("C")
 leds = [ledG, ledY, ledR]
 freqs = [440, 330, 220]
 
-btn = Button("E")
 buz = Buzzer("D")
+btn = Button("E")
 
 def blinking(led, index):
     for _ in range(3):
